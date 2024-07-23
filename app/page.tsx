@@ -8,7 +8,7 @@ export default async function Index() {
   return (
     <>
       {tasks?.map((task) => {
-        <div>{task.task}</div>;
+        <div className="text-2xl font-semibold">{task.task}</div>;
       })}
       <h1>Hello, World</h1>
     </>
