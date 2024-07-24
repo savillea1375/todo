@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/server";
+import { signOut } from "@/app/actions";
 
-export function Header() {
+export async function Header() {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <div className="flex justify-between px-4 my-2 items-center">
       <Link
@@ -9,18 +16,32 @@ export function Header() {
       >
         Todo
       </Link>
-      <div className="flex gap-2 w-[12.5%]">
-        <form className="flex-1" action="">
-          <button className="bg-gray-400 rounded-lg py-3 w-[100%] text-white hover:brightness-[0.8] active:scale-[0.9] transition-all">
+      {!user && (
+        <div className="flex gap-1 w-[25%] justify-end">
+          <Link
+            href="/login"
+            className="bg-gray-400 flex-1 rounded-lg py-3 w-[100%] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
+          >
             Log In
-          </button>
-        </form>
-        <form className="flex-1" action="">
-          <button className="bg-primary rounded-lg py-3 w-[100%] hover:brightness-[0.8] active:scale-[0.9] transition-all">
+          </Link>
+          <Link
+            className="bg-primary flex-1 rounded-lg py-3 w-[100%] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
+            href="/signup"
+          >
             Sign Up
+          </Link>
+        </div>
+      )}
+      {user && (
+        <form className="w-100%" action={signOut}>
+          <button
+            type="submit"
+            className="bg-gray-400 flex-1 rounded-lg px-2 py-3 w-[100%] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
+          >
+            Sign Out
           </button>
         </form>
-      </div>
+      )}
     </div>
   );
 }
