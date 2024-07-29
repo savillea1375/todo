@@ -69,16 +69,20 @@ export async function createTask(formData: FormData) {
 
   const newTask = formData.get("newTask") as string;
 
-  const { error } = await supabase
-    .from("tasks")
-    .insert({ user_id: user?.id, task: newTask });
-
-  if (error) {
-    console.log(error);
+  if (newTask === "") {
+    console.log("Task cannot be empty");
+    return;
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  try {
+    await supabase.from("tasks").insert({ user_id: user?.id, task: newTask });
+  } catch (error) {
+    console.error(error);
+    return;
+  } finally {
+    revalidatePath("/", "layout");
+    redirect("/");
+  }
 }
 
 export async function updateTask(formData: FormData) {

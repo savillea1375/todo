@@ -1,13 +1,17 @@
 "use client";
 
 import { deleteTask, updateTask } from "@/app/actions";
-import { useState } from "react";
+import { useState, useOptimistic } from "react";
 
-export function Task({ task }: any) {
+export function Task(props: any) {
+  const task = props.task;
   const [input, setInput] = useState(task.task);
 
   return (
-    <div className="flex justify-between items-center text-lg pl-3 bg-white rounded-lg p">
+    <div
+      key={task.id}
+      className="flex justify-between items-center text-lg pl-3 bg-white rounded-lg"
+    >
       <form action={updateTask}>
         <input
           className="focus:outline-none"
