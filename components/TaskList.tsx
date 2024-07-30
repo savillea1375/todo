@@ -20,7 +20,7 @@ export function TaskList({ tasks }: any) {
   return (
     <div className="flex flex-col gap-1 w-[100%]">
       <form
-        className="flex justify-between items-center text-lg pl-3 bg-white rounded-lg my-4"
+        className="flex justify-between w-[100%] items-center text-lg pl-3 bg-white rounded-lg my-4"
         action={async (formData: FormData) => {
           setOptimisticTasks({
             action: "add",
@@ -34,7 +34,7 @@ export function TaskList({ tasks }: any) {
           type="text"
           name="newTask"
           placeholder="What's on your mind today?"
-          className="focus:outline-none"
+          className="focus:outline-none w-[100%]"
         />
         <button
           type="submit"

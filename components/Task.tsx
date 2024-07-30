@@ -12,9 +12,9 @@ export function Task(props: any) {
       key={task.id}
       className="flex justify-between items-center text-lg pl-3 bg-white rounded-lg"
     >
-      <form action={updateTask}>
+      <form className="w-[100%]" action={updateTask}>
         <input
-          className="focus:outline-none"
+          className="focus:outline-none w-[100%]"
           onChange={(e) => setInput(e.target.value)}
           type="text"
           name="task"

@@ -20,12 +20,12 @@ export async function Header() {
         <div className="flex gap-1 w-[25%] justify-end">
           <Link
             href="/login"
-            className="bg-gray-400 flex-1 rounded-lg py-3 w-[100%] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
+            className="bg-gray-400 flex-1 rounded-lg py-3 w-[100%] min-w-[4rem] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
           >
             Log In
           </Link>
           <Link
-            className="bg-primary flex-1 rounded-lg py-3 w-[100%] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
+            className="bg-primary flex-1 rounded-lg py-3 w-[100%] min-w-[4rem] max-w-[5rem] text-center text-white hover:brightness-[0.9] active:scale-[0.9] transition-all"
             href="/signup"
           >
             Sign Up

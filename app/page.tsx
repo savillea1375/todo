@@ -20,7 +20,7 @@ export default async function Index() {
 
   return (
     <>
-      <div className="mx-auto p-4 flex flex-col items-center w-[75%] shadow-md rounded-lg bg-gray-100">
+      <div className="mx-auto p-4 flex flex-col items-center max-w-[660px] w-[75%] shadow-md rounded-lg bg-gray-100">
         <h1 className="text-2xl font-semibold">Todo</h1>
         <TaskList tasks={tasks}></TaskList>
       </div>
